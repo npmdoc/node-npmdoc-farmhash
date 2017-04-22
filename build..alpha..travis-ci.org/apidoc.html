@@ -1,0 +1,401 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/lovell/farmhash#readme"
+
+    >farmhash (v1.2.1)</a>
+</h1>
+<h4>Node.js implementation of FarmHash, Google's family of very fast hash functions</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.farmhash">module farmhash</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.farmhash.fingerprint32">
+            function <span class="apidocSignatureSpan">farmhash.</span>fingerprint32
+            <span class="apidocSignatureSpan">(input)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.farmhash.fingerprint64">
+            function <span class="apidocSignatureSpan">farmhash.</span>fingerprint64
+            <span class="apidocSignatureSpan">(input)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.farmhash.hash32">
+            function <span class="apidocSignatureSpan">farmhash.</span>hash32
+            <span class="apidocSignatureSpan">(input)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.farmhash.hash32WithSeed">
+            function <span class="apidocSignatureSpan">farmhash.</span>hash32WithSeed
+            <span class="apidocSignatureSpan">(input, seed)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.farmhash.hash32v1">
+            function <span class="apidocSignatureSpan">farmhash.</span>hash32v1
+            <span class="apidocSignatureSpan">(input)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.farmhash.hash64">
+            function <span class="apidocSignatureSpan">farmhash.</span>hash64
+            <span class="apidocSignatureSpan">(input)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.farmhash.hash64WithSeed">
+            function <span class="apidocSignatureSpan">farmhash.</span>hash64WithSeed
+            <span class="apidocSignatureSpan">(input, seed)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.farmhash.hash64WithSeeds">
+            function <span class="apidocSignatureSpan">farmhash.</span>hash64WithSeeds
+            <span class="apidocSignatureSpan">(input, seed1, seed2)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.farmhash" id="apidoc.module.farmhash">module farmhash</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.farmhash.fingerprint32" id="apidoc.element.farmhash.fingerprint32">
+        function <span class="apidocSignatureSpan">farmhash.</span>fingerprint32
+        <span class="apidocSignatureSpan">(input)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fingerprint32 = function (input) {
+  if (typeof input === &#x27;string&#x27;) {
+    return farmhash.Fingerprint32String(input);
+  }
+  if (Buffer.isBuffer(input)) {
+    return farmhash.Fingerprint32Buffer(input);
+  }
+  throw new Error(&#x27;Expected a String or Buffer for input&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+var hash = farmhash.hash64WithSeed(&#x27;test&#x27;, 123);
+console.log(typeof hash); // &#x27;string&#x27;
+```
+
+```javascript
+var hash = farmhash.<span class="apidocCodeKeywordSpan">fingerprint32</span>(new Buffer(&#x27;test&#x27;));
+console.log(typeof hash); // &#x27;number&#x27;
+```
+
+```javascript
+var hash = farmhash.fingerprint64(&#x27;test&#x27;);
+console.log(typeof hash); // &#x27;string&#x27;
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.farmhash.fingerprint64" id="apidoc.element.farmhash.fingerprint64">
+        function <span class="apidocSignatureSpan">farmhash.</span>fingerprint64
+        <span class="apidocSignatureSpan">(input)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fingerprint64 = function (input) {
+  if (typeof input === &#x27;string&#x27;) {
+    return farmhash.Fingerprint64String(input);
+  }
+  if (Buffer.isBuffer(input)) {
+    return farmhash.Fingerprint64Buffer(input);
+  }
+  throw new Error(&#x27;Expected a String or Buffer for input&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+var hash = farmhash.fingerprint32(new Buffer(&#x27;test&#x27;));
+console.log(typeof hash); // &#x27;number&#x27;
+```
+
+```javascript
+var hash = farmhash.<span class="apidocCodeKeywordSpan">fingerprint64</span>(&#x27;test&#x27;);
+console.log(typeof hash); // &#x27;string&#x27;
+```
+
+## API
+
+### Hash
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.farmhash.hash32" id="apidoc.element.farmhash.hash32">
+        function <span class="apidocSignatureSpan">farmhash.</span>hash32
+        <span class="apidocSignatureSpan">(input)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hash32 = function (input) {
+  if (typeof input === &#x27;string&#x27;) {
+    return farmhash.Hash32String(input);
+  }
+  if (Buffer.isBuffer(input)) {
+    return farmhash.Hash32Buffer(input);
+  }
+  throw new Error(&#x27;Expected a String or Buffer for input&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Usage
+
+```javascript
+var farmhash = require(&#x27;farmhash&#x27;);
+```
+
+```javascript
+var hash = farmhash.<span class="apidocCodeKeywordSpan">hash32</span>(&#x27;test&#x27;);
+console.log(typeof hash); // &#x27;number&#x27;
+```
+
+```javascript
+var hash = farmhash.hash64(new Buffer(&#x27;test&#x27;));
+console.log(typeof hash); // &#x27;string&#x27;
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.farmhash.hash32WithSeed" id="apidoc.element.farmhash.hash32WithSeed">
+        function <span class="apidocSignatureSpan">farmhash.</span>hash32WithSeed
+        <span class="apidocSignatureSpan">(input, seed)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hash32WithSeed = function (input, seed) {
+  verifyInteger(seed);
+  if (typeof input === &#x27;string&#x27;) {
+    return farmhash.Hash32WithSeedString(input, seed);
+  }
+  if (Buffer.isBuffer(input)) {
+    return farmhash.Hash32WithSeedBuffer(input, seed);
+  }
+  throw new Error(&#x27;Expected a String or Buffer for input&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.farmhash.hash32v1" id="apidoc.element.farmhash.hash32v1">
+        function <span class="apidocSignatureSpan">farmhash.</span>hash32v1
+        <span class="apidocSignatureSpan">(input)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hash32v1 = function (input) {
+  if (typeof input === &#x27;string&#x27;) {
+    return farmhashLegacy.Hash32String(input);
+  }
+  if (Buffer.isBuffer(input)) {
+    return farmhashLegacy.Hash32Buffer(input);
+  }
+  throw new Error(&#x27;Expected a String or Buffer for input&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.farmhash.hash64" id="apidoc.element.farmhash.hash64">
+        function <span class="apidocSignatureSpan">farmhash.</span>hash64
+        <span class="apidocSignatureSpan">(input)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hash64 = function (input) {
+  if (typeof input === &#x27;string&#x27;) {
+    return farmhash.Hash64String(input);
+  }
+  if (Buffer.isBuffer(input)) {
+    return farmhash.Hash64Buffer(input);
+  }
+  throw new Error(&#x27;Expected a String or Buffer for input&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+var hash = farmhash.hash32(&#x27;test&#x27;);
+console.log(typeof hash); // &#x27;number&#x27;
+```
+
+```javascript
+var hash = farmhash.<span class="apidocCodeKeywordSpan">hash64</span>(new Buffer(&#x27;test&#x27;));
+console.log(typeof hash); // &#x27;string&#x27;
+```
+
+```javascript
+var hash = farmhash.hash64WithSeed(&#x27;test&#x27;, 123);
+console.log(typeof hash); // &#x27;string&#x27;
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.farmhash.hash64WithSeed" id="apidoc.element.farmhash.hash64WithSeed">
+        function <span class="apidocSignatureSpan">farmhash.</span>hash64WithSeed
+        <span class="apidocSignatureSpan">(input, seed)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hash64WithSeed = function (input, seed) {
+  verifyInteger(seed);
+  if (typeof input === &#x27;string&#x27;) {
+    return farmhash.Hash64WithSeedString(input, seed);
+  }
+  if (Buffer.isBuffer(input)) {
+    return farmhash.Hash64WithSeedBuffer(input, seed);
+  }
+  throw new Error(&#x27;Expected a String or Buffer for input&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+var hash = farmhash.hash64(new Buffer(&#x27;test&#x27;));
+console.log(typeof hash); // &#x27;string&#x27;
+```
+
+```javascript
+var hash = farmhash.<span class="apidocCodeKeywordSpan">hash64WithSeed</span>(&#x27;test&#x27;, 123);
+console.log(typeof hash); // &#x27;string&#x27;
+```
+
+```javascript
+var hash = farmhash.fingerprint32(new Buffer(&#x27;test&#x27;));
+console.log(typeof hash); // &#x27;number&#x27;
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.farmhash.hash64WithSeeds" id="apidoc.element.farmhash.hash64WithSeeds">
+        function <span class="apidocSignatureSpan">farmhash.</span>hash64WithSeeds
+        <span class="apidocSignatureSpan">(input, seed1, seed2)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hash64WithSeeds = function (input, seed1, seed2) {
+  verifyInteger(seed1);
+  verifyInteger(seed2);
+  if (typeof input === &#x27;string&#x27;) {
+    return farmhash.Hash64WithSeedsString(input, seed1, seed2);
+  }
+  if (Buffer.isBuffer(input)) {
+    return farmhash.Hash64WithSeedsBuffer(input, seed1, seed2);
+  }
+  throw new Error(&#x27;Expected a String or Buffer for input&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
